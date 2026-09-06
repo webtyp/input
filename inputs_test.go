@@ -12,8 +12,8 @@ package input
 import (
 	"testing"
 
-	"github.com/tinywasm/fmt"
-	"github.com/tinywasm/fmt/lang"
+	"webtyp.com/fmt"
+	"webtyp.com/fmt/lang"
 )
 
 // tc is a compact validation test case.

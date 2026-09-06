@@ -1,9 +1,9 @@
 package input
-import "github.com/tinywasm/model"
+import "webtyp.com/model"
 
 
 import (
-	"github.com/tinywasm/fmt"
+	"webtyp.com/fmt"
 )
 
 // Input interface defines the behavior for all form input types.

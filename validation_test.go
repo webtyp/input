@@ -142,7 +142,7 @@ func Test_Validation(t *testing.T) {
 		{"Rut", "empty", "", "chars", nil, false},
 
 		// ── Search ───────────────────────────────────────────────────────────
-		{"Search", "valid search", "golang tinywasm", "", nil, false},
+		{"Search", "valid search", "golang webtyp", "", nil, false},
 		{"Search", "empty search", "", "", nil, false},
 
 		// ── Select ───────────────────────────────────────────────────────────

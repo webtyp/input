@@ -1,10 +1,10 @@
 package input
 
-import "github.com/tinywasm/model"
+import "webtyp.com/model"
 
 import (
-	"github.com/tinywasm/fmt"
-	"github.com/tinywasm/fmt/lang"
+	"webtyp.com/fmt"
+	"webtyp.com/fmt/lang"
 )
 
 // Base contains common logic and fields (State) for all inputs.

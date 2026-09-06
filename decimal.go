@@ -1,6 +1,6 @@
 package input
 
-import "github.com/tinywasm/model"
+import "webtyp.com/model"
 
 // decimal is a distinct type from number — Number() keeps reporting FieldInt
 // unconditionally; nothing about it changes.

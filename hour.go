@@ -5,7 +5,7 @@ package input
 
 
 
-import "github.com/tinywasm/fmt"
+import "webtyp.com/fmt"
 
 type hour struct{ Base }
 

@@ -1,6 +1,6 @@
 package input
 
-import "github.com/tinywasm/fmt"
+import "webtyp.com/fmt"
 
 type rut struct{ Base }
 

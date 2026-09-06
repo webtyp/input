@@ -5,7 +5,7 @@ package input
 
 
 
-import "github.com/tinywasm/fmt"
+import "webtyp.com/fmt"
 
 // checkbox represents a boolean input field.
 type checkbox struct{ Base }

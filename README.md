@@ -1,10 +1,10 @@
 # Input Types
 <img src="docs/img/badges.svg">
 
-This package contains all input implementations for `tinywasm/form`.
+This package contains all input implementations for `webtyp/form`.
 Each input implements `model.Kind` (Type, Validate, Clone) plus metadata getters.
 Inputs are **render-free**: they carry no `dom`/`html` imports. Rendering is done by the
-`form` package via `RenderInput(input.Input)`. All inputs use **only** `tinywasm/fmt` —
+`form` package via `RenderInput(input.Input)`. All inputs use **only** `webtyp/fmt` —
 no `errors` or `strconv` from the standard library.
 
 ## Available Inputs
@@ -38,9 +38,9 @@ percentages, ...); using `Number` there silently truncates the value to a whole 
 
 ## No Standard Library
 
-> **Rule**: All input files must import only `github.com/tinywasm/fmt`. No `errors`, `strconv`, or `strings`.
+> **Rule**: All input files must import only `webtyp.com/fmt`. No `errors`, `strconv`, or `strings`.
 
-Use the `tinywasm/fmt` equivalents:
+Use the `webtyp/fmt` equivalents:
 
 ```go
 // Instead of strconv.Atoi:
@@ -80,8 +80,8 @@ All inputs share the same pattern: embed `Base`, configure `Permitted` rules, im
 package myapp
 
 import (
-    "github.com/tinywasm/fmt"
-    "github.com/tinywasm/input"
+    "webtyp.com/fmt"
+    "webtyp.com/input"
 )
 
 // myInput is a custom input that only allows lowercase hex characters.

@@ -1,6 +1,6 @@
 package input
 
-import "github.com/tinywasm/model"
+import "webtyp.com/model"
 
 // Compile-time proof that every constructor returns a value fully
 // implementing model.Kind + Input (Kind unification phase B, Stage 2).
