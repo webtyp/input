@@ -8,7 +8,9 @@ package input
 
 type password struct{ Base }
 
-// Password creates a new Password input instance.
+// Password creates a new Password input instance: a Text-shaped charset
+// composed with the mask (SetMasked) — the default composition for a real
+// password, not a special case of it.
 func Password() Input {
 	p := &password{}
 	p.Letters = true
@@ -18,6 +20,7 @@ func Password() Input {
 	p.Minimum = 5
 	p.Maximum = 50
 	p.InitBase("", "", "password")
+	p.Masked = true
 	return p
 }
 

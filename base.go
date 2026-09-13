@@ -21,6 +21,11 @@ type Base struct {
 	Disabled        bool // HTML disabled attribute
 	Readonly        bool // HTML readonly attribute
 	SkipValidation  bool // Whether to skip validation for this input
+	// Masked renders the control as <input type="password"> without changing
+	// what the value IS or how it validates — presentation, not data (the
+	// Django Field/Widget split; here as a boolean over the same input,
+	// Flutter's obscureText style, since input.Input fuses Field and Widget).
+	Masked          bool
 	Attributes      []fmt.KeyValue
 	model.Permitted // anonymous embed: promotes Letters, Numbers, Validate(), etc.
 }
@@ -98,6 +103,12 @@ func (b *Base) SetSkipValidation(skip bool) {
 func (b *Base) GetSkipValidation() bool {
 	return b.SkipValidation
 }
+
+// SetMasked sets whether this input renders as <input type="password">.
+func (b *Base) SetMasked(v bool) { b.Masked = v }
+
+// IsMasked returns whether this input renders as <input type="password">.
+func (b *Base) IsMasked() bool { return b.Masked }
 
 // SetOptions sets multiple options (for select/checkbox/etc).
 func (b *Base) SetOptions(opts ...fmt.KeyValue) {
