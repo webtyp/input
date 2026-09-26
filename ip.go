@@ -216,3 +216,68 @@ func (i *ip) Clone(parentID, name string) Input {
 	c.InitBase(parentID, name, "text")
 	return &c
 }
+
+// loopbackIP is the one spelling CanonicalIP gives every loopback address.
+// IPv4, because that is what an operator types into a device form and what a
+// log reader recognises; the IPv6 loopback carries no extra information.
+const loopbackIP = "127.0.0.1"
+
+// ipv4MappedPrefix is how a dual-stack socket reports an IPv4 peer
+// ("::ffff:192.168.1.10"); the address is the IPv4 part.
+const ipv4MappedPrefix = "::ffff:"
+
+// CanonicalIP returns the single spelling of an IP address that two IPs are
+// compared by. Whoever stores an IP and whoever later looks it up must both
+// pass it through here, or the same machine is a different string depending on
+// how it connected: one "localhost" reaches a server as ::1 from one client and
+// as 127.0.0.1 from another.
+//
+//   - surrounding space is trimmed and hex digits are lowercased;
+//   - an IPv4-mapped IPv6 address becomes its IPv4 address;
+//   - every loopback address (::1 in any spelling, 127.0.0.0/8) becomes
+//     127.0.0.1 — they all name this same machine, so merging them grants no
+//     other host anything.
+//
+// Any other value is returned trimmed and lowercased, not validated: IP().Validate
+// is the validator. Zero-compression of other IPv6 addresses is not rewritten.
+func CanonicalIP(value string) string {
+	v := fmt.Convert(value).TrimSpace().ToLower().String()
+	if len(v) > len(ipv4MappedPrefix) && v[:len(ipv4MappedPrefix)] == ipv4MappedPrefix {
+		if mapped := v[len(ipv4MappedPrefix):]; validateIPv4(mapped) == nil {
+			v = mapped
+		}
+	}
+	if isLoopbackIPv4(v) || isLoopbackIPv6(v) {
+		return loopbackIP
+	}
+	return v
+}
+
+func isLoopbackIPv4(v string) bool {
+	return len(v) > 4 && v[:4] == "127." && validateIPv4(v) == nil
+}
+
+// isLoopbackIPv6 reports whether v is ::1 in any spelling: every group before
+// the last is zero (or elided by "::") and the last group's value is 1.
+func isLoopbackIPv6(v string) bool {
+	last := -1
+	for i := len(v) - 1; i >= 0; i-- {
+		if v[i] == ':' {
+			last = i
+			break
+		}
+	}
+	if last == -1 || validateIPv6(v) != nil {
+		return false
+	}
+	for _, c := range v[:last] {
+		if c != '0' && c != ':' {
+			return false
+		}
+	}
+	group := v[last+1:]
+	for len(group) > 1 && group[0] == '0' {
+		group = group[1:]
+	}
+	return group == "1"
+}

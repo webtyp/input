@@ -156,6 +156,32 @@ func TestIP_Placeholder(t *testing.T) {
 	}
 }
 
+func TestCanonicalIP(t *testing.T) {
+	// The same machine reaches a server as ::1 or 127.0.0.1 depending on the
+	// client (Chrome vs curl on one "localhost"), so an IP stored at setup and
+	// the one seen at login must be written the same way before they are
+	// compared — or a trusted device is rejected for spelling, not location.
+	cases := []struct{ in, want string }{
+		{"::1", "127.0.0.1"},
+		{"0:0:0:0:0:0:0:1", "127.0.0.1"},
+		{"127.0.0.1", "127.0.0.1"},
+		{"127.1.2.3", "127.0.0.1"},
+		{"::ffff:127.0.0.1", "127.0.0.1"},
+		{"::ffff:192.168.1.10", "192.168.1.10"},
+		{"::FFFF:192.168.1.10", "192.168.1.10"},
+		{" 192.168.1.10 ", "192.168.1.10"},
+		{"FE80::1", "fe80::1"},
+		{"2001:db8::1", "2001:db8::1"},
+		{"192.168.1.1", "192.168.1.1"},
+		{"", ""},
+	}
+	for _, c := range cases {
+		if got := CanonicalIP(c.in); got != c.want {
+			t.Errorf("CanonicalIP(%q) = %q, want %q", c.in, got, c.want)
+		}
+	}
+}
+
 func TestClone_Preservation(t *testing.T) {
 	// Create a prototype with custom configuration
 	proto := Text()
