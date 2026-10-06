@@ -1,31 +1,31 @@
 package input
 
-import "webtyp.com/model"
-
 import (
 	"webtyp.com/fmt"
 	"webtyp.com/fmt/lang"
+	"webtyp.com/model"
 )
 
 // Base contains common logic and fields (State) for all inputs.
 // It is intended to be embedded in concrete input structs.
 type Base struct {
-	id              string
-	name            string
-	htmlName        string         // The HTML type (e.g., "text", "email")
-	Values          []string       // Multiple values support (for select/checkbox/etc)
-	Options         []fmt.KeyValue // Multiple options for select/checkbox/etc
-	Placeholder     []string // raw, untranslated words; resolved live by GetPlaceholder
-	Title           string
-	Required        bool // HTML required attribute
-	Disabled        bool // HTML disabled attribute
-	Readonly        bool // HTML readonly attribute
-	SkipValidation  bool // Whether to skip validation for this input
+	id             string
+	name           string
+	htmlName       string         // The HTML type (e.g., "text", "email")
+	Values         []string       // Multiple values support (for select/checkbox/etc)
+	Options        []fmt.KeyValue // Multiple options for select/checkbox/etc
+	Placeholder    []string       // raw, untranslated words; resolved live by GetPlaceholder
+	Title          string
+	Required       bool // HTML required attribute
+	Disabled       bool // HTML disabled attribute
+	Readonly       bool // HTML readonly attribute
+	SkipValidation bool // Whether to skip validation for this input
 	// Masked renders the control as <input type="password"> without changing
 	// what the value IS or how it validates — presentation, not data (the
 	// Django Field/Widget split; here as a boolean over the same input,
 	// Flutter's obscureText style, since input.Input fuses Field and Widget).
 	Masked          bool
+	FullWidth       bool // Controls whether the field spans all columns in multi-column layouts
 	Attributes      []fmt.KeyValue
 	model.Permitted // anonymous embed: promotes Letters, Numbers, Validate(), etc.
 }
@@ -222,3 +222,14 @@ func (b *Base) HTMLName() string {
 func (b *Base) AddAttribute(key, value string) {
 	b.Attributes = append(b.Attributes, fmt.KeyValue{Key: key, Value: value})
 }
+
+// IsFullWidth returns true if this input requests full container width in a grid.
+func (b *Base) IsFullWidth() bool {
+	return b.FullWidth
+}
+
+// SetFullWidth sets whether this input requests full container width.
+func (b *Base) SetFullWidth(v bool) {
+	b.FullWidth = v
+}
+

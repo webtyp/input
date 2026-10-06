@@ -21,6 +21,22 @@ func Radio(opts ...fmt.KeyValue) Input {
 	return r
 }
 
+// SetOptions updates choices and marks the radio input FullWidth if they exceed a single-column budget.
+func (r *radio) SetOptions(opts ...fmt.KeyValue) {
+	r.Base.SetOptions(opts...)
+	if len(opts) > 2 {
+		r.FullWidth = true
+	} else {
+		totalChars := 0
+		for _, o := range opts {
+			totalChars += len(o.Value)
+		}
+		if totalChars > 20 {
+			r.FullWidth = true
+		}
+	}
+}
+
 // Clone creates a new Radio input.
 func (r *radio) Clone(parentID, name string) Input {
 	c := *r

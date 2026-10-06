@@ -1,11 +1,5 @@
 package input
 
-
-
-
-
-
-
 type textarea struct{ Base }
 
 // Textarea creates a new textarea input instance.
@@ -19,6 +13,7 @@ func Textarea() Input {
 	t.Extra = []rune{'.', ',', '-', '_', ':', ';', '(', ')', '$', '#', '!', '?'}
 	t.Minimum = 5
 	t.Maximum = 2000
+	t.FullWidth = true
 	t.InitBase("", "", "textarea")
 	return t
 }
