@@ -2,7 +2,7 @@ package input
 
 import (
 	"webtyp.com/fmt"
-	"webtyp.com/fmt/lang"
+	"webtyp.com/lang"
 	"webtyp.com/model"
 )
 

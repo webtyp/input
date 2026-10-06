@@ -1,8 +1,5 @@
 package input
 
-
-
-
 // This file contains the shared registry and helpers used by all test files.
 // To add a new input:
 //  1. Add a case in buildInput()
@@ -13,7 +10,6 @@ import (
 	"testing"
 
 	"webtyp.com/fmt"
-	"webtyp.com/fmt/lang"
 )
 
 // tc is a compact validation test case.
@@ -141,19 +137,8 @@ func TestIP_Placeholder(t *testing.T) {
 		t.Errorf("expected IP placeholder 'example: 192.168.1.1', got %q", got)
 	}
 
-	// GetPlaceholder resolves translation live (not cached at construction), so
-	// switching the active language must change the "example:" word without a
-	// new IP() instance — this is the whole point of lazy resolution. The
-	// dictionary itself is a consumer concern, not something input/ hardcodes:
-	// registered here, in the test, rather than in production code.
-	lang.RegisterWords([]lang.DictEntry{
-		{EN: "example:", ES: "ejemplo:"},
-	})
-	defer lang.OutLang(lang.EN)
-	lang.OutLang(lang.ES)
-	if got := getter.GetPlaceholder(); got != "ejemplo: 192.168.1.1" {
-		t.Errorf("expected translated IP placeholder 'ejemplo: 192.168.1.1', got %q", got)
-	}
+	// The translated case lives in tests/placeholder_translate_test.go (WASM):
+	// the dictionary only exists in the browser page.
 }
 
 func TestCanonicalIP(t *testing.T) {
