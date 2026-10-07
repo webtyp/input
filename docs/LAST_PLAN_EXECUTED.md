@@ -2,11 +2,11 @@
 PLAN: "feat: MAC input kind, CanonicalMAC and IsLocallyAdministeredMAC"
 EXECUTOR: jules
 REVIEWER: none
-STATUS: running
-SESSION: 8409417972468080869
 ---
 
-> This plan is dispatched via the CodeJob workflow. See skill: agents-workflow.
+> Executed LOCALLY on 2026-10-07 (the dispatched executor produced nothing).
+> Deviation from the table below: a value with surrounding space (` 48:f1:… `) is **rejected** by
+> `Validate` — `Permitted` has no `Spaces`, exactly like `IP()` — and only `CanonicalMAC` trims it.
 >
 > Phase F1 of the network administration master plan
 > (`veltylabs/mjosefa-cms` → `docs/RED_ADMINISTRACION_MASTER_PLAN.md`, private repo — you do not

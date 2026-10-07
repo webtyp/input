@@ -21,6 +21,7 @@ no `errors` or `strconv` from the standard library.
 | `Gender` | `radio` | `m`/`f` pre-wired options |
 | `Hour` | `time` | `HH:MM` format, digits + `:`, validates 24h range |
 | `IP` | `text` | IPv4 or IPv6 format; `0.0.0.0` rejected |
+| `MAC` | `text` | 12 hex digits, plain or `:`/`-` separated; see `CanonicalMAC`, `IsLocallyAdministeredMAC` |
 | `Number` | `number` | Digits only (0-9), Min: 1, Max: 20 chars |
 | `Password` | `password` | Any char, Min: 5, Max: 50 |
 | `Phone` | `tel` | Digits, `+ ( ) -`, Min: 7, Max: 15 |
