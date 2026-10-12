@@ -15,6 +15,7 @@ type Base struct {
 	Values         []string       // Multiple values support (for select/checkbox/etc)
 	Options        []fmt.KeyValue // Multiple options for select/checkbox/etc
 	Placeholder    []string       // raw, untranslated words; resolved live by GetPlaceholder
+	Example        string         // sample format data (never translated, appended to placeholder)
 	Title          string
 	Required       bool // HTML required attribute
 	Disabled       bool // HTML disabled attribute
@@ -74,14 +75,29 @@ func (b *Base) SetPlaceholder(ph ...string) {
 	b.Placeholder = ph
 }
 
+// SetExample sets a non-translatable format sample to append to the placeholder.
+func (b *Base) SetExample(sample string) {
+	b.Example = sample
+}
+
 // GetPlaceholder returns the input placeholder, translated for the
 // currently active language (resolved live — see fmt/lang.OutLang).
 func (b *Base) GetPlaceholder() string {
-	args := make([]any, len(b.Placeholder))
-	for i, p := range b.Placeholder {
-		args[i] = p
+	var ph string
+	if len(b.Placeholder) > 0 {
+		args := make([]any, len(b.Placeholder))
+		for i, p := range b.Placeholder {
+			args[i] = p
+		}
+		ph = lang.Translate(args...).String()
 	}
-	return lang.Translate(args...).String()
+	if b.Example != "" {
+		if ph != "" {
+			return ph + " " + b.Example
+		}
+		return b.Example
+	}
+	return ph
 }
 
 // SetTitle sets the input title (tooltip).

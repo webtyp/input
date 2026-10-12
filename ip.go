@@ -16,7 +16,8 @@ func IP() Input {
 	// The type accepts IPv4 AND IPv6, so a user cannot infer the shape from
 	// the field name — the format hint belongs to the type that defines the
 	// format, the precedent rut.go already set.
-	i.SetPlaceholder("example:", "192.168.1.1")
+	i.SetPlaceholder("example:")
+	i.SetExample("192.168.1.1")
 	return i
 }
 

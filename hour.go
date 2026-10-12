@@ -17,7 +17,7 @@ func Hour() Input {
 	h.Minimum = 0
 	h.Maximum = 5
 	h.InitBase("", "", "time")
-	h.SetTitle("formato hora: HH:MM")
+	h.SetTitle("time format: HH:MM")
 	return h
 }
 

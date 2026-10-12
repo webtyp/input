@@ -28,7 +28,8 @@ func MAC() Input {
 	i.InitBase("", "", "text")
 	// The three accepted spellings cannot be inferred from the field name —
 	// the format hint belongs to the type that defines the format (ip.go).
-	i.SetPlaceholder("example:", "48:F1:7F:D9:D7:B7")
+	i.SetPlaceholder("example:")
+	i.SetExample("48:F1:7F:D9:D7:B7")
 	return i
 }
 

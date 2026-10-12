@@ -12,7 +12,8 @@ func Rut() Input {
 	r.Minimum = 3
 	r.Maximum = 12
 	r.InitBase("", "", "text")
-	r.SetPlaceholder("example:", "12345678-9")
+	r.SetPlaceholder("example:")
+	r.SetExample("12345678-9")
 	return r
 }
 
