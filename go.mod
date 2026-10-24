@@ -7,4 +7,4 @@ require (
 	webtyp.com/model v0.2.6
 )
 
-require webtyp.com/lang v0.1.9
+require webtyp.com/lang v0.1.10
