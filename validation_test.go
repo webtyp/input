@@ -135,10 +135,14 @@ func Test_Validation(t *testing.T) {
 		{"Rut", "valid 7863697-1", "7863697-1", "", nil, false},
 		{"Rut", "valid K uppercase", "20373221-K", "", nil, false},
 		{"Rut", "valid k lowercase", "20373221-k", "", nil, false},
-		{"Rut", "no hyphen alpha", "15890022k", "hyphen", nil, false},
-		{"Rut", "no hyphen digits", "177344788", "hyphen", nil, false},
+		{"Rut", "no hyphen alpha", "15890022k", "", nil, false},
+		{"Rut", "no hyphen digits", "177344788", "", nil, false},
+		{"Rut", "with dots", "7.863.697-1", "", nil, false},
+		{"Rut", "spaces inside", "7 863 697 - 1", "", nil, false},
+		{"Rut", "leading zero", "07863697-1", "", nil, false},
 		{"Rut", "wrong check digit", "7863697-2", "invalid", nil, false},
-		{"Rut", "leading zero", "01234567-1", "invalid", nil, false},
+		{"Rut", "leading zero wrong digit", "01234567-1", "invalid", nil, false},
+		{"Rut", "letter in body", "78a3697-1", "not allowed", nil, false},
 		{"Rut", "empty", "", "chars", nil, false},
 
 		// ── Search ───────────────────────────────────────────────────────────
