@@ -3,6 +3,8 @@ PLAN: "feat: input.File — the kind of a file field, validated by its bytes, th
 TAG: v0.1.0
 EXECUTOR: jules
 REVIEWER: none
+STATUS: running
+SESSION: 947645065135672486
 ---
 
 > Read AGENTS.md at the repo root before any change.
