@@ -8,6 +8,6 @@ require (
 )
 
 require (
-	webtyp.com/filetype v0.0.6
+	webtyp.com/filetype v0.1.0
 	webtyp.com/lang v0.1.16
 )
