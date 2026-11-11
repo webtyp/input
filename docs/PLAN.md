@@ -3,6 +3,8 @@ PLAN: "feat: input.ImageFile, DocumentFile, ScanFile, VideoFile and AudioFile â€
 TAG: v0.2.0
 EXECUTOR: jules
 REVIEWER: none
+STATUS: running
+SESSION: 14447429625006278792
 ---
 
 > Read AGENTS.md at the repo root before any change.
