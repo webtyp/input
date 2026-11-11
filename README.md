@@ -17,6 +17,11 @@ no `errors` or `strconv` from the standard library.
 | `Datalist` | `text` | Value must match one of the registered `Options.Key` |
 | `Decimal` | `number` | Digits, `.`, `-`, Min: 1, Max: 20 chars — storage `FieldFloat` (see note) |
 | `File` | `file` | e.g. `logo := input.File(filetype.Images, 2<<20)` |
+| `ImageFile` | `file` | e.g. `{Name: "logo", Type: input.ImageFile(2097152)}` |
+| `DocumentFile` | `file` | e.g. `{Name: "contract", Type: input.DocumentFile(10485760)}` |
+| `ScanFile` | `file` | e.g. `{Name: "receipt", Type: input.ScanFile(5242880)}` |
+| `VideoFile` | `file` | e.g. `{Name: "clip", Type: input.VideoFile(26214400)}` |
+| `AudioFile` | `file` | e.g. `{Name: "note", Type: input.AudioFile(10485760)}` |
 | `Email` | `email` | Letters, Numbers, `@ . _ -`, Min: 5, Max: 100 |
 | `Filepath` | `text` | Letters, digits, `.\/- _`, no whitespace, Min: 1 |
 | `Gender` | `radio` | `m`/`f` pre-wired options |

@@ -52,3 +52,29 @@ func (f *file) ValidateFile(data []byte) (filetype.Type, error) {
 	}
 	return f.allowed.Validate(data)
 }
+
+// ImageFile is a file field that accepts raster images (PNG, JPEG, GIF, WebP) up to maxBytes.
+//
+//	{Name: "logo", Type: input.ImageFile(2097152)}
+func ImageFile(maxBytes int) FileKind { return File(filetype.Images, maxBytes) }
+
+// DocumentFile is a file field that accepts PDF, Word, Excel and PowerPoint documents up to maxBytes.
+//
+//	{Name: "contract", Type: input.DocumentFile(10485760)}
+func DocumentFile(maxBytes int) FileKind { return File(filetype.Documents, maxBytes) }
+
+// ScanFile is a file field that accepts scanned papers and photographed receipts: raster images and PDF, up to maxBytes.
+//
+//	{Name: "receipt", Type: input.ScanFile(5242880)}
+func ScanFile(maxBytes int) FileKind { return File(filetype.Scans, maxBytes) }
+
+// VideoFile is a file field that accepts short videos (MP4, MOV, WebM) up to maxBytes. The whole body is read in memory
+// on arrival: keep it small (a few tens of megabytes), never a long recording.
+//
+//	{Name: "clip", Type: input.VideoFile(26214400)}
+func VideoFile(maxBytes int) FileKind { return File(filetype.Videos, maxBytes) }
+
+// AudioFile is a file field that accepts audio (MP3, WAV, OGG, M4A) up to maxBytes.
+//
+//	{Name: "note", Type: input.AudioFile(10485760)}
+func AudioFile(maxBytes int) FileKind { return File(filetype.Audio, maxBytes) }

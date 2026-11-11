@@ -27,3 +27,9 @@
 | [TestSelectWithOptionsChecksMembership](../tests/select_test.go) | |
 | [TestSelectWithoutOptionsAcceptsIDs](../tests/select_test.go) | |
 | [Test_Validation](../validation_test.go) | |
+| [TestImageFile_AcceptsImageRejectsPDF](../tests/file_kinds_test.go) | `input.ImageFile(1024).ValidateFile(png)` ok; `ValidateFile(pdf)` → error |
+| [TestDocumentFile_AcceptsPDFRejectsImage](../tests/file_kinds_test.go) | `input.DocumentFile(1024).ValidateFile(pdf)` ok; `ValidateFile(png)` → error |
+| [TestScanFile_AcceptsImageAndPDF](../tests/file_kinds_test.go) | `input.ScanFile(1024)`: `ValidateFile(png)` ok and `ValidateFile(pdf)` ok |
+| [TestVideoFile_AcceptsMP4RejectsAudio](../tests/file_kinds_test.go) | `input.VideoFile(1024).ValidateFile(mp4)` ok; `ValidateFile(wav)` → error |
+| [TestAudioFile_AcceptsWAVRejectsVideo](../tests/file_kinds_test.go) | `input.AudioFile(1024).ValidateFile(wav)` ok; `ValidateFile(mp4)` → error |
+| [TestFileKinds_StoreText](../tests/file_kinds_test.go) | each of the five: `Storage()` is `model.FieldText`, `Name()` is `"file"`, `MaxBytes()` is the number given |
