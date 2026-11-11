@@ -3,8 +3,10 @@ PLAN: "feat: input.File — the kind of a file field, validated by its bytes, th
 TAG: v0.1.0
 EXECUTOR: jules
 REVIEWER: none
-STATUS: running
+STATUS: review
 SESSION: 947645065135672486
+PR: https://github.com/webtyp/input/pull/1
+REVIEWED_COMMIT: 11839fb654a46ccd48177862f9e273093d924fb9
 ---
 
 > Read AGENTS.md at the repo root before any change.
