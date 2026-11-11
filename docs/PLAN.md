@@ -3,8 +3,10 @@ PLAN: "feat: input.ImageFile, DocumentFile, ScanFile, VideoFile and AudioFile â€
 TAG: v0.2.0
 EXECUTOR: jules
 REVIEWER: none
-STATUS: running
+STATUS: review
 SESSION: 14447429625006278792
+PR: https://github.com/webtyp/input/pull/2
+REVIEWED_COMMIT: 2903a452db515484b389b525a5c88af7f0ce74ed
 ---
 
 > Read AGENTS.md at the repo root before any change.
