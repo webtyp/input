@@ -16,6 +16,7 @@ no `errors` or `strconv` from the standard library.
 | `Date` | `date` | `YYYY-MM-DD` format, leap year + month/day range check |
 | `Datalist` | `text` | Value must match one of the registered `Options.Key` |
 | `Decimal` | `number` | Digits, `.`, `-`, Min: 1, Max: 20 chars — storage `FieldFloat` (see note) |
+| `File` | `file` | e.g. `logo := input.File(filetype.Images, 2<<20)` |
 | `Email` | `email` | Letters, Numbers, `@ . _ -`, Min: 5, Max: 100 |
 | `Filepath` | `text` | Letters, digits, `.\/- _`, no whitespace, Min: 1 |
 | `Gender` | `radio` | `m`/`f` pre-wired options |

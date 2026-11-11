@@ -12,7 +12,7 @@ type datalist struct{ Base }
 // Datalist creates a new datalist input instance.
 func Datalist() Input {
 	dl := &datalist{}
-	dl.Base.InitBase("", "", "datalist")
+	dl.InitBase("", "", "datalist")
 	return dl
 }
 
