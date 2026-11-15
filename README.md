@@ -30,7 +30,7 @@ no `errors` or `strconv` from the standard library.
 | `MAC` | `text` | 12 hex digits, plain or `:`/`-` separated; see `CanonicalMAC`, `IsLocallyAdministeredMAC` |
 | `Number` | `number` | Digits only (0-9), Min: 1, Max: 20 chars |
 | `Password` | `password` | Any char, Min: 5, Max: 50 |
-| `Phone` | `tel` | Digits, `+ ( ) -`, Min: 7, Max: 15 |
+| `Phone` | `tel` | International form only: `+`, then 7 to 15 digits, the digits the prefix's country has (`country.Validate`); `form` draws a country prefix select and the number |
 | `Radio` | `radio` | Value must match one of the registered `Options.Key` |
 | `Rut` | `text` | Chilean RUT `XXXXXXX-D`, verifies check digit |
 | `Search` | `search` | Letters, Numbers, Spaces, Min: 0, Max: 100 — optional |

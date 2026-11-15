@@ -8,6 +8,9 @@ require (
 )
 
 require (
+	webtyp.com/country v0.0.0-00010101000000-000000000000
 	webtyp.com/filetype v0.1.1
 	webtyp.com/lang v0.1.16
 )
+
+replace webtyp.com/country => ../country

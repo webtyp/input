@@ -29,3 +29,14 @@ type Input interface {
 	HTMLName() string
 	HandlerName() string
 }
+
+// AlsoSetter is an optional capability for an input that, when the person
+// commits its value, also sets another field of the form: the one the model
+// names in Field.AlsoSetsField. The form hands the input the function that
+// writes that field (BindAlsoSets); the input decides WHEN to call it and WITH
+// WHAT, so neither the form nor the module knows what an age or a country
+// means. A value written this way follows the target input's own format
+// ("true"/"false" for a checkbox).
+type AlsoSetter interface {
+	BindAlsoSets(set func(value string))
+}

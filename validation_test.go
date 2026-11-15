@@ -113,12 +113,14 @@ func Test_Validation(t *testing.T) {
 		{"Password", "too short", "a", "chars", nil, false},
 
 		// ── Phone ────────────────────────────────────────────────────────────
-		{"Phone", "valid intl", "+56 9 1234 5678", "", nil, false},
-		{"Phone", "valid local", "912345678", "", nil, false},
-		{"Phone", "too long", "+001-800-555-0123-99", "chars", nil, false},
-		{"Phone", "too short", "123", "chars", nil, false},
+		{"Phone", "valid intl", "+56912345678", "", nil, false},
+		{"Phone", "country length: Chile has 9", "+569123456789", "digits", nil, false},
+		{"Phone", "no prefix", "912345678", "international", nil, false},
+		{"Phone", "spaces are not stored", "+56 9 1234 5678", "international", nil, false},
+		{"Phone", "too long", "+5691234567890123456", "international", nil, false},
+		{"Phone", "too short", "+12345", "international", nil, false},
 		{"Phone", "empty", "", "chars", nil, false},
-		{"Phone", "letter after min length", "+56-abc-123-456", "not allowed", nil, false},
+		{"Phone", "letters", "+56-abc-123-456", "international", nil, false},
 
 		// ── Radio ────────────────────────────────────────────────────────────
 		// No options set: falls back to Permitted (Letters/Numbers, Minimum 1).
