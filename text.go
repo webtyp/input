@@ -29,4 +29,7 @@ func (t *text) Clone(parentID, name string) Input {
 	return &c
 }
 
+// SearchableText: a name or any short free text enters the row's text_search (model.SearchableText).
+func (t *text) SearchableText() {}
+
 func (t *text) setTilde(v bool) { t.Tilde = v }

@@ -33,3 +33,5 @@
 | [TestVideoFile_AcceptsMP4RejectsAudio](../tests/file_kinds_test.go) | `input.VideoFile(1024).ValidateFile(mp4)` ok; `ValidateFile(wav)` → error |
 | [TestAudioFile_AcceptsWAVRejectsVideo](../tests/file_kinds_test.go) | `input.AudioFile(1024).ValidateFile(wav)` ok; `ValidateFile(mp4)` → error |
 | [TestFileKinds_StoreText](../tests/file_kinds_test.go) | each of the five: `Storage()` is `model.FieldText`, `Name()` is `"file"`, `MaxBytes()` is the number given |
+| [TestSearchableText_ShortFreeTextKindsEnter](../tests/searchable_text_test.go) | `Text`, `Phone`, `Email`, `Rut` implement `model.SearchableText` |
+| [TestSearchableText_OtherKindsStayOut](../tests/searchable_text_test.go) | `Textarea`, `Address`, `Select`, `Checkbox`, `Gender`, `Password` do not implement it |

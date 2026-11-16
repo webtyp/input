@@ -91,3 +91,6 @@ func (r *rut) Clone(parentID, name string) Input {
 	c.InitBase(parentID, name, "text")
 	return &c
 }
+
+// SearchableText: a document number enters the row's text_search, so «12345678» finds «12.345.678-5» (model.SearchableText).
+func (r *rut) SearchableText() {}

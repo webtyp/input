@@ -36,3 +36,6 @@ func (p *phone) Clone(parentID, name string) Input {
 	c.SetOptions(p.GetOptions()...)
 	return &c
 }
+
+// SearchableText: a phone enters the row's text_search, so «9 1234 5678» finds it (model.SearchableText).
+func (p *phone) SearchableText() {}

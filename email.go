@@ -26,3 +26,6 @@ func (e *email) Clone(parentID, name string) Input {
 	c.InitBase(parentID, name, "email")
 	return &c
 }
+
+// SearchableText: an email enters the row's text_search (model.SearchableText).
+func (e *email) SearchableText() {}
