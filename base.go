@@ -52,6 +52,13 @@ func (b *Base) InitBase(parentID, name, htmlName string) {
 	}
 }
 
+// SetPermitted replaces the rules this input enforces (the form lays the
+// field's declared rules over the control's defaults: model.Field.PermittedOver).
+func (b *Base) SetPermitted(p model.Permitted) { b.Permitted = p }
+
+// Rules returns the rules this input enforces now.
+func (b *Base) Rules() model.Permitted { return b.Permitted }
+
 // SetValues sets the input values.
 func (b *Base) SetValues(v ...string) {
 	b.Values = v
