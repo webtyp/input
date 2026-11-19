@@ -22,15 +22,6 @@ type tc struct {
 	req  bool
 }
 
-// rc is a compact render test case.
-type rc struct {
-	t       string // input type name
-	name    string // subtest name
-	values  []string
-	opts    []fmt.KeyValue
-	contain string // expected substring in HTML output
-}
-
 // Shared option sets used across test files.
 var opts12 = []fmt.KeyValue{{Key: "1", Value: "Admin"}, {Key: "2", Value: "Editor"}}
 var optsGender = []fmt.KeyValue{{Key: "m", Value: "Male"}, {Key: "f", Value: "Female"}}

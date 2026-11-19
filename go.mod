@@ -10,5 +10,5 @@ require (
 require (
 	webtyp.com/country v0.0.2
 	webtyp.com/filetype v0.1.1
-	webtyp.com/lang v0.1.16
+	webtyp.com/lang v0.1.20
 )

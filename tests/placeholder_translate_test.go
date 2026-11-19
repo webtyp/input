@@ -11,14 +11,10 @@ import (
 	"webtyp.com/lang"
 )
 
-// The page carries the dictionary (sitec inlines it); insert it before any lookup.
+// The page bootstrap preloads the dictionary into globalThis.__webtypLang.
 func TestMain(m *testing.M) {
-	doc := js.Global().Get("document")
-	el := doc.Call("createElement", "script")
-	el.Set("type", "application/json")
-	el.Set("id", lang.ScriptID)
-	el.Set("textContent", `{"default":"es","languages":["es"],"keys":{"example:":["ejemplo:"]}}`)
-	doc.Get("head").Call("appendChild", el)
+	parsed := js.Global().Get("JSON").Call("parse", `{"default":"es","languages":["es"],"keys":{"example:":["ejemplo:"]}}`)
+	js.Global().Set(lang.GlobalDictKey, parsed)
 	os.Exit(m.Run())
 }
 
