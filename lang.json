@@ -4,6 +4,7 @@
     "Date": ["Fecha", "日期", "तारीख", "تاريخ", "Data", "Datex", "Datum", "Дата"],
     "Digit": ["Dígito", "数字", "अंक", "رقم", "Dígitox", "Chiffre", "Ziffer", "Цифра"],
     "DoNotStartWith": ["No empezar con", "不以开始", "से शुरू न करें", "لا تبدأ بـ", "Não começar com", "Ne pas commencer par", "Nicht beginnen mit", "Не начинать с"],
+    "Enter address": ["Ingrese dirección", "输入地址", "पता दर्ज करें", "أدخل العنوان", "Digite o endereço", "Saisissez l'adresse", "Adresse eingeben", "Введите адрес"],
     "Empty": ["Vacío", "空", "खाली", "فارغ", "Vazio", "Vide", "Leer", "Пустой"],
     "Female": ["Femenino", "女", "महिला", "أنثى", "Feminino", "Féminin", "Weiblich", "Женский"],
     "Field": ["Campo", "字段", "क्षेत्र", "حقل", "Campox", "Champ", "Feld", "Поле"],
